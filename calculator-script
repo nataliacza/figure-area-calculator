@@ -1,0 +1,78 @@
+def rectangle_area(length_a: int, width_b: int):
+    if length_a and width_b > 0:
+        return length_a * width_b
+    return "Both parameters must be greater than 0. Try again."
+
+def square_area(edge_a: int):
+    if edge_a > 0:
+        return round(pow(edge_a, 2), 2)
+    return "Parameter must be greater than 0. Try again."
+
+def triangle_area(edge_a: int, height_h: int):
+    if edge_a and height_h > 0:
+        return (edge_a * height_h)/2
+    return "Both parameters must be greater than 0. Try again."
+
+def trapeze_area(edge_a: int, edge_b: int, height_h: int):
+    if edge_a and edge_b and height_h > 0:
+        return ((edge_a + edge_b) * height_h)/2
+    return "All parameters must be greater than 0. Try again."
+
+def circle_area(radius_r: int):
+    if radius_r > 0:
+        pi = 3.14
+        return round(pi * pow(radius_r, 2), 2)
+    return "Parameter must be greater than 0. Try again."
+
+
+print("Figure area calculator v1.0")
+
+while True:
+    print("===============================")
+    print("1. Rectangle area.")
+    print("2. Square area.")
+    print("3. Triangle area.")
+    print("4. Trapeze area.")
+    print("5. Circle area.")
+    print("6. EXIT.")
+    print("===============================")
+    selection = input("Select option: ")
+
+    if selection == "1":
+        try:
+            a = int(input("Provide a: "))
+            b = int(input("Provide b: "))
+            print("Rectangle area: ", rectangle_area(a, b))
+        except ValueError:
+            print("Provide integer.")
+    elif selection == "2":
+        try:
+            a = int(input("Provide a: "))
+            print("Square area:", square_area(a))
+        except ValueError:
+            print("Provide integer.")
+    elif selection == "3":
+        try:
+            a = int(input("Provide a: "))
+            h = int(input("Provide h: "))
+            print("Triangle area:", triangle_area(a, h))
+        except ValueError:
+            print("Provide integer.")
+    elif selection == "4":
+        try:
+            a = int(input("Provide a: "))
+            b = int(input("Provide b: "))
+            h = int(input("Provide h: "))
+            print("Trapeze area:", trapeze_area(a, b, h))
+        except ValueError:
+            print("Provide integer.")
+    elif selection == "5":
+        try:
+            r = int(input("Provide r: "))
+            print("Circle area:", circle_area(r))
+        except ValueError:
+            print("Provide integer.")
+    elif selection == "6":
+        break
+    else:
+        print("Provide correct menu option. Try again.")
