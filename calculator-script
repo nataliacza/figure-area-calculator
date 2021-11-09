@@ -1,24 +1,28 @@
-def rectangle_area(length_a: int, width_b: int):
-    if length_a and width_b > 0:
-        return length_a * width_b
-    return "Both parameters must be greater than 0. Try again."
+from enum import IntEnum
 
-def square_area(edge_a: int):
+MENU = IntEnum("MENU", "rectangle square triangle trapeze circle exit")
+
+def rectangle_area(length_a, width_b):
+    if length_a and width_b > 0:
+        return round(length_a * width_b, 2)
+    return "Parameters must be greater than 0. Try again."
+
+def square_area(edge_a):
     if edge_a > 0:
         return round(pow(edge_a, 2), 2)
     return "Parameter must be greater than 0. Try again."
 
-def triangle_area(edge_a: int, height_h: int):
+def triangle_area(edge_a, height_h):
     if edge_a and height_h > 0:
-        return (edge_a * height_h)/2
-    return "Both parameters must be greater than 0. Try again."
+        return round((edge_a * height_h)/2, 2)
+    return "Parameters must be greater than 0. Try again."
 
-def trapeze_area(edge_a: int, edge_b: int, height_h: int):
+def trapeze_area(edge_a, edge_b, height_h):
     if edge_a and edge_b and height_h > 0:
-        return ((edge_a + edge_b) * height_h)/2
-    return "All parameters must be greater than 0. Try again."
+        return round(((edge_a + edge_b) * height_h)/2, 2)
+    return "Parameters must be greater than 0. Try again."
 
-def circle_area(radius_r: int):
+def circle_area(radius_r):
     if radius_r > 0:
         pi = 3.14
         return round(pi * pow(radius_r, 2), 2)
@@ -36,43 +40,44 @@ while True:
     print("5. Circle area.")
     print("6. EXIT.")
     print("===============================")
-    selection = input("Select option: ")
 
-    if selection == "1":
+    selection = int(input("Select option: "))
+
+    if selection == MENU.rectangle:
         try:
-            a = int(input("Provide a: "))
-            b = int(input("Provide b: "))
+            a = float(input("Provide a: "))
+            b = float(input("Provide b: "))
             print("Rectangle area: ", rectangle_area(a, b))
         except ValueError:
-            print("Provide integer.")
-    elif selection == "2":
+            print("Provide valid number.")
+    elif selection == MENU.square:
         try:
-            a = int(input("Provide a: "))
+            a = float(input("Provide a: "))
             print("Square area:", square_area(a))
         except ValueError:
-            print("Provide integer.")
-    elif selection == "3":
+            print("Provide valid number.")
+    elif selection == MENU.triangle:
         try:
-            a = int(input("Provide a: "))
-            h = int(input("Provide h: "))
+            a = float(input("Provide a: "))
+            h = float(input("Provide h: "))
             print("Triangle area:", triangle_area(a, h))
         except ValueError:
-            print("Provide integer.")
-    elif selection == "4":
+            print("Provide valid number.")
+    elif selection == MENU.trapeze:
         try:
-            a = int(input("Provide a: "))
-            b = int(input("Provide b: "))
-            h = int(input("Provide h: "))
+            a = float(input("Provide a: "))
+            b = float(input("Provide b: "))
+            h = float(input("Provide h: "))
             print("Trapeze area:", trapeze_area(a, b, h))
         except ValueError:
-            print("Provide integer.")
-    elif selection == "5":
+            print("Provide valid number.")
+    elif selection == MENU.circle:
         try:
-            r = int(input("Provide r: "))
+            r = float(input("Provide r: "))
             print("Circle area:", circle_area(r))
         except ValueError:
-            print("Provide integer.")
-    elif selection == "6":
+            print("Provide valid number.")
+    elif selection == MENU.exit:
         break
     else:
         print("Provide correct menu option. Try again.")
